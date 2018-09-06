@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Image } from 'react-native'
+import { Text, View, StyleSheet, Image, KeyboardAvoidingView } from 'react-native'
 import LoginForm from './LoginForm'
 
 export default class Login extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.loginContainer}>
-          <Image resizeMode="contain" style={styles.logo} source={require('../../components/images/mango_logo.png')} />
+      <KeyboardAvoidingView behavior="padding" style={styles.container}>
+        <View style={styles.container}>
+          <View style={styles.loginContainer}>
+            <Image resizeMode="contain" style={styles.logo} source={require('../../components/images/mango_logo.png')} />
+          </View>
+          <View style={styles.formContainer}>
+            <LoginForm />
+          </View>
         </View>
-        <View style={styles.formContainer}>
-          <LoginForm />
-        </View>
-      </View>
+      </KeyboardAvoidingView >
 
     )
   }
@@ -32,5 +34,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 300,
     height: 100
+  },
+  formContainer: {
+    alignItems: 'stretch'
   }
 })

@@ -10,7 +10,7 @@ export default class LoginForm extends Component {
 
   render() {
     return (
-      <View>
+      <View style={{alignItems: 'stretch'}}>
         <TextInput style={styles.input}
           autoCapitalize="none"
           onSubmitEditing={() => this.passwordInput.focus()}
@@ -47,6 +47,8 @@ const styles = StyleSheet.create({
     padding: 10,
     color: '#fff',
     alignContent: 'center'
+    
+
   },
   buttonContainer: {
     backgroundColor: '#2980b6',
