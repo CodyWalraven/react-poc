@@ -10,7 +10,7 @@ export default class LoginForm extends Component {
 
   render() {
     return (
-      <View style={{alignItems: 'stretch'}}>
+      <View style={{alignItems: 'stretch', paddingLeft: 20, paddingRight: 20, paddingBottom: 55}}>
         <TextInput style={styles.input}
           autoCapitalize="none"
           onSubmitEditing={() => this.passwordInput.focus()}
