@@ -27,8 +27,9 @@ export default class LoginForm extends Component {
           placeholderTextColor='rgba(225,225,225,0.7)'
           secureTextEntry />
 
-        <TouchableOpacity style={styles.buttonContainer} >
+        <TouchableOpacity  style={styles.buttonContainer}  >
           <Text style={styles.buttonText}>LOGIN</Text>
+          
         </TouchableOpacity> 
       </View>
     );
