@@ -8,9 +8,16 @@ export default class Home extends Component {
     };
   }
 
+  static navigationOptions = {
+    title: 'Home',
+    headerMode: 'screen',
+    color: 'blue'
+
+  };
+
   render() {
     return (
-      <View>
+      <View style={{flex: 1}}>
         <Text> The Home screen </Text>
       </View>
     );

@@ -3,6 +3,11 @@ import { Text, View, StyleSheet, Image, KeyboardAvoidingView } from 'react-nativ
 import LoginForm from './LoginForm'
 
 export default class Login extends Component {
+  static navigationOptions = {
+    title: 'Login',
+    headerMode: 'screen',
+    header: null
+  };
   render() {
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
