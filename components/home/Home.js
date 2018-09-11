@@ -20,7 +20,7 @@ export default class Home extends Component {
   render() {
     return (
       <ScrollView>
-        <Card title= "Dog"/>
+        <Card title="iPad Air" image_file={{uri: "https://store.storeimages.cdn-apple.com/4981/as-images.apple.com/is/image/AppleInc/aos/published/images/r/fb/rfb/ipad/rfb-ipad-air-gold-wifi-2014?wid=1144\\&hei=1144&fmt=jpeg&qlt=95&op_usm=0.5%2C0.5&.v=0"}}/>
         <CardViewWithImage
           width={(340)}
           height={(400)}
