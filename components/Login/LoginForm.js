@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Alert, Button, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Alert, Button, StyleSheet, StatusBar} from 'react-native';
 import { withNavigation } from 'react-navigation';
 
 class LoginForm extends Component {
@@ -27,12 +27,13 @@ class LoginForm extends Component {
           placeholderTextColor='rgba(225,225,225,0.7)'
           secureTextEntry />
 
-        <TouchableOpacity  style={styles.buttonContainer} onPress={() => this.props.navigation.navigate('Home')} >
+        <TouchableOpacity  style={styles.buttonContainer}
+         onPress={  () => this.props.navigation.navigate('Home')} >
           <Text style={styles.buttonText}>LOGIN</Text>
           
         </TouchableOpacity> 
       </View>
-    );
+    );s
   }
 }
 
