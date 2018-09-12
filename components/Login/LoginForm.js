@@ -18,12 +18,14 @@ class LoginForm extends Component {
           keyboardType='email-address'
           returnKeyType="next"
           placeholder='Email'
+          underlineColorAndroid=  'transparent'
           placeholderTextColor='rgba(225,225,225,0.7)' />
 
         <TextInput style={styles.input}
           returnKeyType="go"
           ref={(input) => this.passwordInput = input}
           placeholder='Password'
+          underlineColorAndroid='transparent'
           placeholderTextColor='rgba(225,225,225,0.7)'
           secureTextEntry />
 
@@ -45,16 +47,19 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     backgroundColor: 'rgba(225,225,225,0.2)',
-    marginBottom: 10,
+    marginBottom: 15,
     padding: 10,
-    color: '#fff',
-    alignContent: 'center'
+    borderRadius: 15,
+    alignContent: 'center',
     
 
+    
   },
   buttonContainer: {
-    backgroundColor: '#2980b6',
-    paddingVertical: 15
+    backgroundColor: '#009933',
+    paddingVertical: 15,
+    borderRadius: 15,
+
   },
   buttonText: {
     color: '#fff',
