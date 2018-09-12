@@ -10,7 +10,7 @@ class LoginForm extends Component {
   }
   render() {
     return (
-      <View style={{alignItems: 'stretch', paddingLeft: 20, paddingRight: 20, paddingBottom: 55}}>
+      <View style={styles.container}>
         <TextInput style={styles.input}
           autoCapitalize="none"
           onSubmitEditing={() => this.passwordInput.focus()}
@@ -42,7 +42,11 @@ class LoginForm extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20
+    padding: 20,
+    alignItems: 'stretch',
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 55
   },
   input: {
     height: 40,
@@ -50,7 +54,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     padding: 10,
     borderRadius: 15,
-    fontSize: 18,
+    fontSize: 15,
     alignContent: 'center',
     color: 'rgba(225,225,225,0.8)'
     
