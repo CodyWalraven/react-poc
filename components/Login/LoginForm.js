@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     padding: 10,
     borderRadius: 15,
+    fontSize: 18,
     alignContent: 'center',
     color: 'rgba(225,225,225,0.8)'
     
@@ -59,11 +60,13 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     borderRadius: 15,
 
+
   },
   buttonText: {
     color: '#fff',
     textAlign: 'center',
-    fontWeight: '700'
+    fontWeight: '500',
+    fontSize: 20
   }
 })
 
