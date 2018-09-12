@@ -19,14 +19,14 @@ class LoginForm extends Component {
           returnKeyType="next"
           placeholder='Email'
           underlineColorAndroid=  'transparent'
-          placeholderTextColor='rgba(225,225,225,0.7)' />
+          placeholderTextColor='rgba(225,225,225,0.8)' />
 
         <TextInput style={styles.input}
           returnKeyType="go"
           ref={(input) => this.passwordInput = input}
           placeholder='Password'
           underlineColorAndroid='transparent'
-          placeholderTextColor='rgba(225,225,225,0.7)'
+          placeholderTextColor='rgba(225,225,225,0.8)'
           secureTextEntry />
 
         <TouchableOpacity  style={styles.buttonContainer}
@@ -51,8 +51,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 15,
     alignContent: 'center',
-    
-
+    color: 'rgba(225,225,225,0.8)'
     
   },
   buttonContainer: {

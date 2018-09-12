@@ -13,7 +13,7 @@ export default class Login extends Component {
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <LinearGradient
-          start={[0.5,0.5]}
+          start={[0.2,0,2]}
           colors={['#2d7fd2', '#336699']}
           style={styles.container}>
           <View style={styles.loginContainer}>
@@ -50,9 +50,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 60,
     textAlign: 'center',
-    textShadowColor: 'rgba(0,0,0,0.2)',
+    textShadowColor: 'rgba(0,0,0,0.3)',
     textShadowOffset: {width: 4, height: 4},
-    textShadowRadius: 0
+    textShadowRadius: 3
   },
 
   logo: {
