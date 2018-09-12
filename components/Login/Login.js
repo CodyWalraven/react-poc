@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Image, KeyboardAvoidingView } from 'react-native'
+import { Text, View, StyleSheet, KeyboardAvoidingView} from 'react-native'
 import LoginForm from './LoginForm'
 import { LinearGradient } from 'expo';
-import DismissKeyboard from 'dismissKeyboard';
 
 export default class Login extends Component {
   static navigationOptions = {
@@ -12,13 +11,10 @@ export default class Login extends Component {
   };
   render() {
     return (
+      //Keyboard avoid view shifts the email/password fields up with padding to avoid keyboard
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
-        <LinearGradient
-          start={[2.2,0.2]}
-          colors={['#00b4db', '#336699']}
-          style={styles.container}>
+        <LinearGradient start={[2.2,0.2]} colors={['#00b4db', '#336699']} style={styles.container}>
           <View style={styles.loginContainer}>
-
             <Text style={styles.logoText}>Operation Mango</Text>
           </View>
           <View style={styles.formContainer}>
@@ -26,7 +22,6 @@ export default class Login extends Component {
           </View>
         </ LinearGradient>
       </KeyboardAvoidingView >
-
     )
   }
 }
@@ -44,9 +39,7 @@ const styles = StyleSheet.create({
   },
 
   logoText: {
-    // alignItems: 'center',
-    // flexGrow: 1,
-    // justifyContent: 'center',
+
     color: 'white',
     fontWeight: 'bold',
     fontSize: 60,
