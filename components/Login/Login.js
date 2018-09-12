@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Text, View, StyleSheet, Image, KeyboardAvoidingView } from 'react-native'
 import LoginForm from './LoginForm'
 import { LinearGradient } from 'expo';
+import DismissKeyboard from 'dismissKeyboard';
 
 export default class Login extends Component {
   static navigationOptions = {
