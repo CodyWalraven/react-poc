@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, KeyboardAvoidingView} from 'react-native'
+import { Text, View, StyleSheet, KeyboardAvoidingView, Image} from 'react-native'
 import LoginForm from './LoginForm'
 import { LinearGradient } from 'expo';
 
@@ -15,7 +15,7 @@ export default class Login extends Component {
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <LinearGradient start={[2.2,0.2]} colors={['#00b4db', '#336699']} style={styles.container}>
           <View style={styles.loginContainer}>
-            <Text style={styles.logoText}>Operation Mango</Text>
+            <Image source={require('../images/panda2.png')} style={styles.logo} />
           </View>
           <View style={styles.formContainer}>
             <LoginForm />
@@ -51,9 +51,10 @@ const styles = StyleSheet.create({
 
   logo: {
     position: 'absolute',
-    width: 650,
-    height: 200,
-    padding: 20
+    width: 350.8,
+    height: 135.8,
+    padding: 0,
+    paddingRight: 40
   },
   formContainer: {
     alignItems: 'stretch'
