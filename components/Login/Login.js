@@ -13,8 +13,8 @@ export default class Login extends Component {
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <LinearGradient
-          start={[0.2,0,2]}
-          colors={['#2d7fd2', '#336699']}
+          start={[2.2,0.2]}
+          colors={['#00b4db', '#336699']}
           style={styles.container}>
           <View style={styles.loginContainer}>
 

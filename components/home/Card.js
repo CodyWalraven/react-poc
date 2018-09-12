@@ -5,6 +5,7 @@ import { CardViewWithImage } from 'react-native-simple-card-view'
 export default class Card extends Component {
   constructor(props) {
     super(props);
+    var { height, width } = Dimensions.get('window');
     this.state = {
     };
   }
@@ -13,7 +14,7 @@ export default class Card extends Component {
     return (
       <View>
             <CardViewWithImage
-                width={(340)}
+                width={width}
                 height={(400)}
                 source={this.props.image_file}
                 content={'64Gb Ipad Air gold'}
