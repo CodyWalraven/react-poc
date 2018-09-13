@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, TouchableOpacity, Alert, Button, StyleSheet, StatusBar} from 'react-native'
-import { withNavigation } from 'react-navigation'
+import { View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native'
+import { withNavigation} from 'react-navigation'
 
 
 class LoginForm extends Component {
@@ -11,7 +11,12 @@ class LoginForm extends Component {
   }
 
   apiLogin = () => {
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
+
+    let NavigateToHomeScreen = () => {
+      this.props.navigation.navigate('Home')
+    }
+
     xhr.open("POST", 'https://login.assetpanda.com/v2/session/token', true);
     xhr.setRequestHeader('Content-Type', 'application/json')
     xhr.send(JSON.stringify({
@@ -24,6 +29,7 @@ class LoginForm extends Component {
         var data = JSON.parse(this.responseText);
         let token = data.access_token
         alert(token)
+        NavigateToHomeScreen()
       }
       else if (xhr.status === 422){
         alert("Username or password is incorrect")
@@ -35,7 +41,7 @@ class LoginForm extends Component {
         alert("Internal server error")
       }
     }
-  }
+ }
 
   render() {
     return (
