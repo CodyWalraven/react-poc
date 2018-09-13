@@ -5,12 +5,12 @@ import { CardViewWithImage } from 'react-native-simple-card-view'
 
 export default class Home extends Component {
   constructor(props) {
-    var { height, width } = Dimensions.get('window');
+    let screen_width = (Dimensions.get('window').width) - 20
     super(props);
     this.state = {
-      window_width: width + 100
-
+      card_width: screen_width
     };
+
   }
 
   static navigationOptions = {
@@ -24,8 +24,8 @@ export default class Home extends Component {
     return (
       <ScrollView>
         <CardViewWithImage
-          //width={this.props.window_width + 50}
-          width ={(340)}
+
+          width={this.state.card_width}
           height={(400)}
             source={{ uri: 'https://assets.pcmag.com/media/images/330805-dell-inspiron-15-i15rv-6190-blk.jpg?width=1000&height=712' }}
             content={'A new dell laptop we purchased last year, has 512gb ssd drive and pentium processor'}
@@ -34,6 +34,7 @@ export default class Home extends Component {
           imageWidth={300}
           imageHeight={100}
         />
+
         <CardViewWithImage
           width={(340)}
           height={(400)}

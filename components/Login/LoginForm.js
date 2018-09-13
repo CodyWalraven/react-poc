@@ -25,6 +25,7 @@ class LoginForm extends Component {
       password: this.state.password
     }))
 
+
     xhr.onload = function () {
       if (xhr.status === 200){
         var data = JSON.parse(this.responseText);
@@ -43,6 +44,12 @@ class LoginForm extends Component {
       }
     }
  }
+
+
+ secretLogin = () => {
+   this.props.navigation.navigate('Home')
+}  
+
 
   render() {
     return (
@@ -71,6 +78,11 @@ class LoginForm extends Component {
          onPress={  () => this.apiLogin()} >
           <Text style={styles.buttonText}>LOGIN</Text>
         </TouchableOpacity> 
+
+        <TouchableOpacity style={styles.adminButtonContainer}
+          onPress={() => this.secretLogin()} >
+          <Text style={styles.buttonText}>SECRET LOGIN</Text>
+        </TouchableOpacity> 
       </View>
     );s
   }
@@ -98,6 +110,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#009933',
     paddingVertical: 15,
     borderRadius: 15,
+  },
+  adminButtonContainer: {
+    backgroundColor: '#803399',
+    paddingVertical: 15,
+    borderRadius: 15,
+    marginTop: 10,
+    
   },
   buttonText: {
     color: '#fff',
