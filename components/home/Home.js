@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, Container, Dimensions } from 'react-native';
+import { ScrollView, Text, Container, Dimensions, Keyboard } from 'react-native';
 import Card from './Card'
 import { CardViewWithImage } from 'react-native-simple-card-view'
 
@@ -23,7 +23,6 @@ export default class Home extends Component {
   render() {
     return (
       <ScrollView>
-      
         <CardViewWithImage
           //width={this.props.window_width + 50}
           width ={(340)}

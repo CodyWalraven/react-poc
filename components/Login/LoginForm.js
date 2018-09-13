@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Keyboard} from 'react-native'
 import { withNavigation} from 'react-navigation'
 
 
@@ -11,6 +11,7 @@ class LoginForm extends Component {
   }
 
   apiLogin = () => {
+    //Sends credentials to api and stores token, also navigates to home screen upon success
     let xhr = new XMLHttpRequest();
 
     let NavigateToHomeScreen = () => {
@@ -28,7 +29,7 @@ class LoginForm extends Component {
       if (xhr.status === 200){
         var data = JSON.parse(this.responseText);
         let token = data.access_token
-        alert(token)
+        Keyboard.dismiss()
         NavigateToHomeScreen()
       }
       else if (xhr.status === 422){
