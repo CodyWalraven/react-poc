@@ -15,7 +15,7 @@ export default class Login extends Component {
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <LinearGradient start={[2.2,0.2]} colors={['#00b4db', '#336699']} style={styles.container}>
           <View style={styles.loginContainer}>
-            <Image source={require('../images/panda2.png')} style={styles.logo} />
+            <Image source={require('../images/panda2small.png')} style={styles.logo} />
           </View>
           <View style={styles.formContainer}>
             <LoginForm />
@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
 
   logo: {
     position: 'absolute',
-    width: 350.8,
-    height: 135.8,
+    width: 345.8,
+    height: 136.8,
     padding: 0,
     paddingRight: 40
   },

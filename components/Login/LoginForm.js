@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Alert, Button, StyleSheet, StatusBar} from 'react-native';
-import { withNavigation } from 'react-navigation';
+import React, { Component } from 'react'
+import { View, Text, TextInput, TouchableOpacity, Alert, Button, StyleSheet, StatusBar} from 'react-native'
+import { withNavigation } from 'react-navigation'
+import xhttp from 'XMLHttpRequest'
+
 
 class LoginForm extends Component {
   constructor(props) {
@@ -23,6 +25,28 @@ class LoginForm extends Component {
   else {
     alert("Username or password is incorrect")
   }
+  }
+
+
+  apiLogin2 = () => {
+    let email_val = 'cody_default@assetpanda.com'
+    let password_val = 'panda123'
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", 'https://login.assetpanda.com/v2/session/token', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+      email: email_val,
+      password: password_val
+    }))
+
+    xhr.onload = function () {
+      var data = JSON.parse(this.responseText);
+      let token = data.access_token
+      alert(token)
+      alert(`The type of token is ${typeof token}`)
+    }
+
   }
 
   render() {
@@ -49,7 +73,7 @@ class LoginForm extends Component {
           secureTextEntry />
 
         <TouchableOpacity  style={styles.buttonContainer}
-         onPress={  () => this.validateLogin()} >
+         onPress={  () => this.apiLogin2()} >
           <Text style={styles.buttonText}>LOGIN</Text>
         </TouchableOpacity> 
   
