@@ -1,52 +1,40 @@
 import React, { Component } from 'react'
 import { View, Text, TextInput, TouchableOpacity, Alert, Button, StyleSheet, StatusBar} from 'react-native'
 import { withNavigation } from 'react-navigation'
-import xhttp from 'XMLHttpRequest'
 
 
 class LoginForm extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      error: "default"
-    };
+    }
   }
 
-  validateLogin = () => {
-  let validEmail = 'test@gmail.com'
-  let validPassword = 'test'
-
-  if ((this.state.email === validEmail) && (this.state.password === validPassword)) {
-    this.props.navigation.navigate('Home')
-  }
-  else if (this.state.email === undefined && this.state.password === undefined){
-    alert("Please enter a username and password")
-  }
-  else {
-    alert("Username or password is incorrect")
-  }
-  }
-
-
-  apiLogin2 = () => {
-    let email_val = 'cody_default@assetpanda.com'
-    let password_val = 'panda123'
-
+  apiLogin = () => {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", 'https://login.assetpanda.com/v2/session/token', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('Content-Type', 'application/json')
     xhr.send(JSON.stringify({
-      email: email_val,
-      password: password_val
+      email: this.state.email,
+      password: this.state.password
     }))
 
     xhr.onload = function () {
-      var data = JSON.parse(this.responseText);
-      let token = data.access_token
-      alert(token)
-      alert(`The type of token is ${typeof token}`)
+      if (xhr.status === 200){
+        var data = JSON.parse(this.responseText);
+        let token = data.access_token
+        alert(token)
+      }
+      else if (xhr.status === 422){
+        alert("Username or password is incorrect")
+      }
+      else if (xhr.status === 502){
+        alert("502 bad gateway error, please try again in a few minutes")
+      }
+      else if (xhr.status === 500){
+        alert("Internal server error")
+      }
     }
-
   }
 
   render() {
@@ -73,15 +61,13 @@ class LoginForm extends Component {
           secureTextEntry />
 
         <TouchableOpacity  style={styles.buttonContainer}
-         onPress={  () => this.apiLogin2()} >
+         onPress={  () => this.apiLogin()} >
           <Text style={styles.buttonText}>LOGIN</Text>
         </TouchableOpacity> 
-  
       </View>
     );s
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -100,14 +86,11 @@ const styles = StyleSheet.create({
     fontSize: 15,
     alignContent: 'center',
     color: 'rgba(225,225,225,0.8)'
-    
   },
   buttonContainer: {
     backgroundColor: '#009933',
     paddingVertical: 15,
     borderRadius: 15,
-
-
   },
   buttonText: {
     color: '#fff',
