@@ -14,9 +14,9 @@ class LoginForm extends Component {
     //Sends credentials to api and stores token, also navigates to home screen upon success
     let xhr = new XMLHttpRequest();
 
-    let NavigateToHomeScreen = () => {
+    navigateToHomeScreen = () => {
       this.props.navigation.navigate('Home')
-    }
+    }  
 
     xhr.open("POST", 'https://login.assetpanda.com/v2/session/token', true);
     xhr.setRequestHeader('Content-Type', 'application/json')
@@ -25,13 +25,13 @@ class LoginForm extends Component {
       password: this.state.password
     }))
 
-
     xhr.onload = function () {
       if (xhr.status === 200){
         var data = JSON.parse(this.responseText);
         let token = data.access_token
         Keyboard.dismiss()
-        NavigateToHomeScreen()
+        alert(`Your token is: ${token}`)
+        navigateToHomeScreen()
       }
       else if (xhr.status === 422){
         alert("Username or password is incorrect")
@@ -46,9 +46,7 @@ class LoginForm extends Component {
  }
 
 
- secretLogin = () => {
-   this.props.navigation.navigate('Home')
-}  
+ 
 
 
   render() {
@@ -80,7 +78,7 @@ class LoginForm extends Component {
         </TouchableOpacity> 
 
         <TouchableOpacity style={styles.adminButtonContainer}
-          onPress={() => this.secretLogin()} >
+          onPress={() => this.props.navigation.navigate('Home')} >
           <Text style={styles.buttonText}>SECRET LOGIN</Text>
         </TouchableOpacity> 
       </View>
