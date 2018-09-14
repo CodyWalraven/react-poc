@@ -11,7 +11,7 @@ class LoginForm extends Component {
   }
 
   apiLogin = () => {
-    //Sends credentials to api and stores token, also navigates to home screen upon success
+    //Sends credentials to api and stores token, also navigates to Home screen upon success
     let xhr = new XMLHttpRequest();
 
     navigateToHomeScreen = () => {

@@ -393,7 +393,7 @@
   dependencies:
     core-js "^2.5.7"
     find-cache-dir "^1.0.0"
-    home-or-tmp "^3.0.0"
+    Home-or-tmp "^3.0.0"
     lodash "^4.17.10"
     mkdirp "^0.5.1"
     pirates "^4.0.0"
@@ -1554,7 +1554,7 @@ babel-register@^6.24.1, babel-register@^6.26.0:
     babel-core "^6.26.0"
     babel-runtime "^6.26.0"
     core-js "^2.5.0"
-    home-or-tmp "^2.0.0"
+    Home-or-tmp "^2.0.0"
     lodash "^4.17.4"
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
@@ -3180,20 +3180,20 @@ hoist-non-react-statics@^2.2.0, hoist-non-react-statics@^2.3.1, hoist-non-react-
   version "2.5.5"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
 
-home-dir@^1.0.0:
+Home-dir@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/home-dir/-/home-dir-1.0.0.tgz#2917eb44bdc9072ceda942579543847e3017fe4e"
+  resolved "https://registry.yarnpkg.com/Home-dir/-/Home-dir-1.0.0.tgz#2917eb44bdc9072ceda942579543847e3017fe4e"
 
-home-or-tmp@^2.0.0:
+Home-or-tmp@^2.0.0:
   version "2.0.0"
-  resolved "https://registry.yarnpkg.com/home-or-tmp/-/home-or-tmp-2.0.0.tgz#e36c3f2d2cae7d746a857e38d18d5f32a7882db8"
+  resolved "https://registry.yarnpkg.com/Home-or-tmp/-/Home-or-tmp-2.0.0.tgz#e36c3f2d2cae7d746a857e38d18d5f32a7882db8"
   dependencies:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.1"
 
-home-or-tmp@^3.0.0:
+Home-or-tmp@^3.0.0:
   version "3.0.0"
-  resolved "https://registry.yarnpkg.com/home-or-tmp/-/home-or-tmp-3.0.0.tgz#57a8fe24cf33cdd524860a15821ddc25c86671fb"
+  resolved "https://registry.yarnpkg.com/Home-or-tmp/-/Home-or-tmp-3.0.0.tgz#57a8fe24cf33cdd524860a15821ddc25c86671fb"
 
 hosted-git-info@^2.1.4:
   version "2.7.1"
@@ -7155,7 +7155,7 @@ xdl@48.1.4:
     glob-promise "^3.3.0"
     globby "^6.1.0"
     hasbin "^1.2.3"
-    home-dir "^1.0.0"
+    Home-dir "^1.0.0"
     idx "^2.1.0"
     indent-string "^3.1.0"
     inquirer "^5.0.1"

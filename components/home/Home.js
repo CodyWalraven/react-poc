@@ -49,7 +49,7 @@ export default class Home extends Component {
           width={(340)}
           height={(400)}
           source={{ uri: 'http://www.prospectmagazine.co.uk/wp-content/uploads/2014/12/feature_cover_assets_large.jpg' }}
-          content={'This is a big house home to the Jim family who love to eat pizza and hotdogs and corn.'}
+          content={'This is a big house Home to the Jim family who love to eat pizza and hotdogs and corn.'}
           title={'A whole house'}
           imageWidth={300}
             roundedImage={false}
