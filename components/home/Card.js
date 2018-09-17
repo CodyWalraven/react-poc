@@ -38,7 +38,12 @@ export default class Card extends Component {
     xhr.onload = function() {
       if (xhr.status === 200) {
         var data = JSON.parse(this.responseText)
-        AppStore.image_id = data.objects[0].default_attachment.medium
+        try {
+          AppStore.image_id = data.objects[0].default_attachment.medium
+        } catch (error) {
+          AppStore.image_id =
+            "https://www.massinsight.org/wp-content/uploads/2016/05/placeholder-4-500x300.png"
+        }
         AppStore.primary_default = data.objects[0].display_name
         AppStore.secondary_default = data.objects[0].field_5
         alert(`The image url is ${AppStore.image_id}`)
