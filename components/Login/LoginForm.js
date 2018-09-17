@@ -31,9 +31,8 @@ class LoginForm extends Component {
     xhr.onload = function () {
       if (xhr.status === 200){
         var data = JSON.parse(this.responseText);
-        let token = new AppStore(data.access_token)
+        AppStore.client_token = data.access_token
         Keyboard.dismiss()
-        alert(`Your token is: ${token.client_token}`)
         navigateToHomeScreen()
       }
       else if (xhr.status === 422){

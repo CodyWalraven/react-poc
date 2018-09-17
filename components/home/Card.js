@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Dimensions } from 'react-native';
 import { CardViewWithImage } from 'react-native-simple-card-view'
 import { AppStore } from '../AppStore/AppStore'
 
 export default class Card extends Component {
   constructor(props) {
     super(props)
-    var { height, width } = Dimensions.get('window')
-    let AppStore = new AppStore
+    let width = Dimensions.get('window').width - 20
+    let my_token = AppStore.client_token
     this.state = {
+      width: width,
+      token: my_token
     };
-  }
+  };
+
 
   render() {
     return (
       <View>
             <CardViewWithImage
-                width={width}
+                width={this.state.width}
                 height={(400)}
                 source={this.props.image_file}
                 content={'64Gb Ipad Air gold'}
-                title={this.props.title}
+                title={`It's ${this.state.token}`}
                 roundedImage={false}
                 imageWidth={300}
                 imageHeight={100}

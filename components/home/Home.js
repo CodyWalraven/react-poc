@@ -23,8 +23,8 @@ export default class Home extends Component {
   render() {
     return (
       <ScrollView>
+        <Card />
         <CardViewWithImage
-
           width={this.state.card_width}
           height={(400)}
             source={{ uri: 'https://assets.pcmag.com/media/images/330805-dell-inspiron-15-i15rv-6190-blk.jpg?width=1000&height=712' }}
