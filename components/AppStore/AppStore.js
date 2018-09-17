@@ -1,6 +1,7 @@
 export class AppStore {
   constructor(token){
     this.token = token
+    this.refresh = true
   }
 
   get client_token(){
@@ -16,4 +17,19 @@ export class AppStore {
     this.token = input
   }
 
+  //Asset ID getter and setter
+  set asset_id(id){
+    this.assetID = id
+  }
+  get asset_id(){
+    return this.assetID
+  }
+
+  get image_id(){
+    return this.image_id
+  }
+
+  set image_id(id){
+    this.image_id = id
+  }
 }
