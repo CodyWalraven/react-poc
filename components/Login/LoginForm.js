@@ -79,10 +79,10 @@ class LoginForm extends Component {
           <Text style={styles.buttonText}>LOGIN</Text>
         </TouchableOpacity> 
 
-        <TouchableOpacity style={styles.adminButtonContainer}
+        {/* <TouchableOpacity style={styles.adminButtonContainer}
           onPress={() => this.props.navigation.navigate('Home')} >
           <Text style={styles.buttonText}>SECRET LOGIN</Text>
-        </TouchableOpacity> 
+        </TouchableOpacity>  */}
       </View>
     );s
   }
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     paddingLeft: 20,
     paddingRight: 20,
-    paddingBottom: 55
+    paddingBottom: 85
   },
   input: {
     height: 40,

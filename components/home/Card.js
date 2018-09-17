@@ -18,17 +18,16 @@ export default class Card extends Component {
 
   componentWillMount(){
     this.fetchAssetGroupID()
-    this.fetchGroupInfo(AppStore.asset_id)    
   }
 
-  fetchGroupInfo = (group_id) => {
+  fetchGroupData = (group_id) => {
     let xhr = new XMLHttpRequest();
 
     refreshComp = () => {
       this.forceUpdate()
     }
 
-    xhr.open("GET", `https://login.assetpanda.com/v2/entities/#{group_id}/objects`, true);
+    xhr.open("GET", `https://login.assetpanda.com/v2/entities/${AppStore.asset_id}/objects`, true);
     xhr.setRequestHeader('Content-Type', 'application/json')
     xhr.setRequestHeader('Authorization', `Bearer ${AppStore.client_token}`)
     xhr.send(JSON.stringify({
@@ -38,6 +37,8 @@ export default class Card extends Component {
       if (xhr.status === 200) {
         var data = JSON.parse(this.responseText);
         AppStore.image_id = data.objects[0].default_attachment.medium
+        AppStore.primary_default = data.objects[0].display_name
+        AppStore.secondary_default = data.objects[0].field_5
         alert(`The image url is ${AppStore.image_id}`)
         refreshComp()
 
@@ -49,7 +50,7 @@ export default class Card extends Component {
         alert("Internal server error")
       }
       else{
-        alert("Some other error occured")
+        alert(`Some other error occured code ${xhr.status}`)
       }
     }
   }
@@ -62,6 +63,10 @@ export default class Card extends Component {
       this.forceUpdate()
     }
 
+    getGroupInfo = (group_id) => {
+      this.fetchGroupData(group_id)
+    }
+
     xhr.open("GET", 'https://login.assetpanda.com/v2/entities', true);
     xhr.setRequestHeader('Content-Type', 'application/json')
     xhr.setRequestHeader('Authorization', `Bearer ${AppStore.client_token}`)
@@ -72,8 +77,9 @@ export default class Card extends Component {
       if (xhr.status === 200) {
         var data = JSON.parse(this.responseText);
         AppStore.asset_id = data[0].id
-        alert(`The asset id is ${AppStore.asset_id}`)
+        alert(`The group id is ${AppStore.asset_id}`)
         refreshComp()
+        getGroupInfo()
 
       }
       else if (xhr.status === 502) {
@@ -91,9 +97,9 @@ export default class Card extends Component {
       <View>
             <CardViewWithImage
                 width={this.state.width}
-                source={AppStore.image_id}
-                content={AppStore.asset_id}
-                title={this.state.test}
+                source={{uri: AppStore.image_id}}
+                content={AppStore.secondary_default}
+                title={AppStore.primary_default}
                 roundedImage={false}
                 imageWidth={300}
                 imageHeight={this.state.height}

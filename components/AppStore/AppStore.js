@@ -32,4 +32,21 @@ export class AppStore {
   set image_id(id){
     this.image_id = id
   }
+
+  get primary_default(){
+    return this.primary_default
+  }
+
+  set primary_default(id){
+    this.primary_default = id
+  }
+
+  get secondary_default(){
+    return this.secondary_default
+  }
+
+  set secondary_default(id){
+    this.secondary_default = id
+  }
+
 }
