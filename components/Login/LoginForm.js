@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Keyboard} from 'react-native'
 import { withNavigation} from 'react-navigation'
+import {AppStore} from '../AppStore/AppStore'
 
 
 class LoginForm extends Component {
@@ -9,6 +10,8 @@ class LoginForm extends Component {
     this.state = {
     }
   }
+  
+
 
   apiLogin = () => {
     //Sends credentials to api and stores token, also navigates to Home screen upon success
@@ -28,9 +31,9 @@ class LoginForm extends Component {
     xhr.onload = function () {
       if (xhr.status === 200){
         var data = JSON.parse(this.responseText);
-        let token = data.access_token
+        let token = new AppStore(data.access_token)
         Keyboard.dismiss()
-        alert(`Your token is: ${token}`)
+        alert(`Your token is: ${token.client_token}`)
         navigateToHomeScreen()
       }
       else if (xhr.status === 422){

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { CardViewWithImage } from 'react-native-simple-card-view'
+import { AppStore } from '../AppStore/AppStore'
 
 export default class Card extends Component {
   constructor(props) {
-    super(props);
-    var { height, width } = Dimensions.get('window');
+    super(props)
+    var { height, width } = Dimensions.get('window')
+    let AppStore = new AppStore
     this.state = {
     };
   }
