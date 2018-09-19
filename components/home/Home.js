@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import { ScrollView, Text, Container, Dimensions, Keyboard } from "react-native"
 import Card from "./Card"
-import { CardViewWithImage } from "react-native-simple-card-view"
 import { AppStore } from "../AppStore/AppStore"
 
 export default class Home extends Component {
@@ -19,35 +18,56 @@ export default class Home extends Component {
     color: "blue"
   }
 
-  fetchApiData(url, dataStore, requestType) {
-    let xhr = new XMLHttpRequest()
-    let apiURL = `https://login.assetpanda.com/${url}`
+  componentWillMount() {
+    this.fetchAssetGroupID(() => {
+      this.fetchGroupData()
+    })
+  }
 
-    xhr.open(requestType, apiURL, true)
-    xhr.setRequestHeader("Content-Type", "application/json")
-    xhr.setRequestHeader("Authorization", `Bearer ${AppStore.client_token}`)
-    xhr.send(JSON.stringify({}))
+  fetchGroupData = group_id => {
+    let xhr = new XMLHttpRequest()
+
+    refreshComp = () => {
+      this.forceUpdate()
+    }
 
     setDataState = data => {
       this.setState({ data: data })
     }
 
+    getDataState = () => {
+      return this.state.data.totals.objects
+    }
+
+    xhr.open(
+      "GET",
+      `https://login.assetpanda.com/v2/entities/${
+        AppStore.main_entity_id
+      }/objects`,
+      true
+    )
+    xhr.setRequestHeader("Content-Type", "application/json")
+    xhr.setRequestHeader("Authorization", `Bearer ${AppStore.client_token}`)
+    xhr.send(JSON.stringify({}))
+
     xhr.onload = function() {
       if (xhr.status === 200) {
         var data = JSON.parse(this.responseText)
-        AppStore.asset_id = data[0].id
-        alert(`The group id is ${AppStore.asset_id}`)
+        setDataState(data)
+        alert(`The image url is ${data.objects[0].default_attachment.medium}`)
+        alert(`The data state is ${getDataState()}`)
         refreshComp()
-        getGroupInfo()
       } else if (xhr.status === 502) {
         alert("502 bad gateway error, please try again in a few minutes")
       } else if (xhr.status === 500) {
         alert("Internal server error")
+      } else {
+        alert(`Some other error occured code ${xhr.status}`)
       }
     }
   }
 
-  fetchAssetGroupID = () => {
+  fetchAssetGroupID = callback => {
     //Sends credentials to api and stores token, also navigates to Home screen upon success
     let xhr = new XMLHttpRequest()
 
@@ -66,11 +86,10 @@ export default class Home extends Component {
 
     xhr.onload = function() {
       if (xhr.status === 200) {
-        var data = JSON.parse(this.responseText)
-        AppStore.asset_id = data[0].id
-        alert(`The group id is ${AppStore.asset_id}`)
-        refreshComp()
-        getGroupInfo()
+        var data_full = JSON.parse(this.responseText)
+        AppStore.main_entity_id = data_full[0].id
+        alert(`The group id is ${AppStore.main_entity_id}`)
+        callback()
       } else if (xhr.status === 502) {
         alert("502 bad gateway error, please try again in a few minutes")
       } else if (xhr.status === 500) {
@@ -78,6 +97,7 @@ export default class Home extends Component {
       }
     }
   }
+
   render() {
     return (
       <ScrollView>
