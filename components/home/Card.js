@@ -16,7 +16,9 @@ export default class Card extends Component {
   }
 
   componentWillMount() {
-    this.fetchAssetGroupID()
+    this.fetchAssetGroupID(() => {
+      this.fetchGroupData()
+    })
   }
 
   fetchGroupData = group_id => {
@@ -58,7 +60,7 @@ export default class Card extends Component {
     }
   }
 
-  fetchAssetGroupID = () => {
+  fetchAssetGroupID = callback => {
     //Sends credentials to api and stores token, also navigates to Home screen upon success
     let xhr = new XMLHttpRequest()
 
@@ -81,7 +83,7 @@ export default class Card extends Component {
         AppStore.asset_id = data[0].id
         alert(`The group id is ${AppStore.asset_id}`)
         refreshComp()
-        getGroupInfo()
+        callback()
       } else if (xhr.status === 502) {
         alert("502 bad gateway error, please try again in a few minutes")
       } else if (xhr.status === 500) {
