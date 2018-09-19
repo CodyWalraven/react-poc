@@ -27,7 +27,6 @@ export default class Home extends Component {
 
   fetchGroupData = group_id => {
     let xhr = new XMLHttpRequest()
-    var _ = require("lodash")
 
     refreshComp = () => {
       this.forceUpdate()
