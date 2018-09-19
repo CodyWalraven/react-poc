@@ -8,7 +8,8 @@ export default class Home extends Component {
     let screen_width = Dimensions.get("window").width - 20
     super(props)
     this.state = {
-      card_width: screen_width
+      card_width: screen_width,
+      display_names: []
     }
   }
 
@@ -26,6 +27,7 @@ export default class Home extends Component {
 
   fetchGroupData = group_id => {
     let xhr = new XMLHttpRequest()
+    var _ = require("lodash")
 
     refreshComp = () => {
       this.forceUpdate()
@@ -36,7 +38,14 @@ export default class Home extends Component {
     }
 
     getDataState = () => {
-      return this.state.data.totals.objects
+      let objects = this.state.data.objects
+      for (let x = 0; x < objects.length; x++) {
+        let current_item = objects[x].display_name
+        //let image_url = objects[x].default_attachment.url
+
+        this.state.display_names.push(current_item)
+        console.log(this.state.display_names)
+      }
     }
 
     xhr.open(
@@ -54,8 +63,7 @@ export default class Home extends Component {
       if (xhr.status === 200) {
         var data = JSON.parse(this.responseText)
         setDataState(data)
-        alert(`The image url is ${data.objects[0].default_attachment.medium}`)
-        alert(`The data state is ${getDataState()}`)
+        console.log(`The display name is ${getDataState()}`)
         refreshComp()
       } else if (xhr.status === 502) {
         alert("502 bad gateway error, please try again in a few minutes")
@@ -101,7 +109,9 @@ export default class Home extends Component {
   render() {
     return (
       <ScrollView>
-        <Card />
+        {this.state.display_names.map(display_name => (
+          <Card key={Math.random()} title={display_name} />
+        ))}
       </ScrollView>
     )
   }

@@ -7,7 +7,7 @@ export default class Card extends Component {
   constructor(props) {
     super(props)
     let width = Dimensions.get("window").width - 20
-    let height = Dimensions.get("window").height / 8
+    let height = Dimensions.get("window").height / 6
 
     this.state = {
       width: width,
