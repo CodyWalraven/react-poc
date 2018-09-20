@@ -25,7 +25,7 @@ export default class Home extends Component {
     })
   }
 
-  fetchGroupData = group_id => {
+  fetchGroupData = () => {
     let xhr = new XMLHttpRequest()
 
     refreshComp = () => {
@@ -43,7 +43,6 @@ export default class Home extends Component {
         //let image_url = objects[x].default_attachment.url
 
         this.state.display_names.push(current_item)
-        console.log(this.state.display_names)
       }
     }
 
