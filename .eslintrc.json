@@ -23,6 +23,12 @@
       {
         "allow": ["warn", "error", "log"]
       }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 100
+      }
     ]
   }
 }
