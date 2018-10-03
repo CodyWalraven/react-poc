@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { ScrollView, Text, Container, Dimensions, Keyboard } from "react-native"
 import Card from "./Card"
+import Sidebar from "react-native-sidebar"
 import { AppStore } from "../AppStore/AppStore"
 
 export default class Home extends Component {
@@ -18,7 +19,7 @@ export default class Home extends Component {
     headerMode: "screen",
     color: "blue"
   }
-
+  // Runs right before the home screen appears
   componentWillMount() {
     this.fetchAssetGroupID(() => {
       this.fetchGroupData()
@@ -64,11 +65,9 @@ export default class Home extends Component {
     xhr.onload = function() {
       if (xhr.status === 200) {
         var data = JSON.parse(this.responseText)
-        console.log(data)
         setDataState(data)
         getDataState()
         refreshComp()
-        console.log(`The display names are ${returnDisplayNames()}`)
       } else if (xhr.status === 502) {
         alert("502 bad gateway error, please try again in a few minutes")
       } else if (xhr.status === 500) {
@@ -100,7 +99,6 @@ export default class Home extends Component {
       if (xhr.status === 200) {
         var data_full = JSON.parse(this.responseText)
         AppStore.main_entity_id = data_full[0].id
-        alert(`The id of the main group is ${AppStore.main_entity_id}`)
         callback()
       } else if (xhr.status === 502) {
         alert("502 bad gateway error, please try again in a few minutes")

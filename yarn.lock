@@ -6483,6 +6483,11 @@ react-native-scripts@1.14.0:
     rimraf "^2.6.1"
     xdl "48.1.4"
 
+react-native-sidebar@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-sidebar/-/react-native-sidebar-0.3.0.tgz#0d78c5a08b8d7ade89ff46bf22090475c6442cc3"
+  integrity sha1-DXjFoIuNet6J/0a/IgkEdcZELMM=
+
 react-native-simple-card-view@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/react-native-simple-card-view/-/react-native-simple-card-view-0.3.0.tgz#4591d8f8ed9b6b37ab16d0fc281becd658697ba4"
