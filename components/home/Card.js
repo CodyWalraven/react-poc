@@ -23,8 +23,7 @@ export default class Card extends Component {
         <CardViewWithImage
           width={this.state.width}
           source={{
-            uri:
-              "http://meeconline.com/wp-content/uploads/2014/08/placeholder.png"
+            uri: this.props.image
           }}
           content={AppStore.secondary_default}
           title={this.props.title}
