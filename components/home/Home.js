@@ -36,6 +36,10 @@ export default class Home extends Component {
       this.setState({ data: data })
     }
 
+    returnDisplayNames = () => {
+      return this.state.display_names
+    }
+
     getDataState = () => {
       let objects = this.state.data.objects
       for (let x = 0; x < objects.length; x++) {
@@ -45,7 +49,7 @@ export default class Home extends Component {
         this.state.display_names.push(current_item)
       }
     }
-
+    //
     xhr.open(
       "GET",
       `https://login.assetpanda.com/v2/entities/${
@@ -60,9 +64,11 @@ export default class Home extends Component {
     xhr.onload = function() {
       if (xhr.status === 200) {
         var data = JSON.parse(this.responseText)
+        console.log(data)
         setDataState(data)
-        console.log(`The display name is ${getDataState()}`)
+        getDataState()
         refreshComp()
+        console.log(`The display names are ${returnDisplayNames()}`)
       } else if (xhr.status === 502) {
         alert("502 bad gateway error, please try again in a few minutes")
       } else if (xhr.status === 500) {
@@ -94,7 +100,7 @@ export default class Home extends Component {
       if (xhr.status === 200) {
         var data_full = JSON.parse(this.responseText)
         AppStore.main_entity_id = data_full[0].id
-        alert(`The group id is ${AppStore.main_entity_id}`)
+        alert(`The id of the main group is ${AppStore.main_entity_id}`)
         callback()
       } else if (xhr.status === 502) {
         alert("502 bad gateway error, please try again in a few minutes")

@@ -7,7 +7,7 @@ export default class Card extends Component {
   constructor(props) {
     super(props)
     let width = Dimensions.get("window").width - 20
-    let height = Dimensions.get("window").height / 6
+    let height = Dimensions.get("window").height / 8
 
     this.state = {
       width: width,
@@ -15,24 +15,15 @@ export default class Card extends Component {
     }
   }
 
-  setImage = () => {
-    if (this.props.image == undefined) {
-      return {
-        uri:
-          "https://vignette.wikia.nocookie.net/the-darkest-minds/images/4/47/Placeholder.png/revision/latest?cb=20160927044640"
-      }
-    } else {
-      return { uri: this.props.image }
-    }
-  }
+  componentWillMount() {}
 
   render() {
     return (
       <View>
         <CardViewWithImage
           width={this.state.width}
-          source={this.setImage()}
-          content={this.props.content}
+          source={{ uri: AppStore.image_id }}
+          content={AppStore.secondary_default}
           title={this.props.title}
           roundedImage={false}
           imageWidth={300}

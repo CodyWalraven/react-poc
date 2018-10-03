@@ -25,6 +25,7 @@ class LoginForm extends Component {
     }
 
     xhr.open("POST", "https://login.assetpanda.com/v2/session/token", true)
+    xhr.mode = "no-cors"
     xhr.setRequestHeader("Content-Type", "application/json")
     xhr.send(
       JSON.stringify({
